@@ -1,5 +1,7 @@
 <?php
 
+namespace ScopelOutlayManagement\model;
+
 class User
 {
     private $_userId;

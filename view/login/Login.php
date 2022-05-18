@@ -18,8 +18,8 @@
             <h4>Login</h4>
         </header>
         <form name="login-form" class="login-form" action="../../controller/LoginController.php" method="post">
-            <input type="text" class="login-input" placeholder="Username" required autofocus/>
-            <input type="password" class="login-input" placeholder="Password" required/>
+            <input type="text" name="username" class="login-input" placeholder="Username" required autofocus/>
+            <input type="password" name="password" class="login-input" placeholder="Password" required/>
             <div class="submit-container">
                 <a href="CreateAccount.php" class="login-button">Create Account</a>
                 <button type="submit" class="login-button">Sign In</button>

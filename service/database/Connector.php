@@ -1,5 +1,10 @@
 <?php
 
+namespace ScopelOutlayManagement\service\connector;
+
+use Exception;
+use mysqli;
+
 class Connector
 {
 
@@ -19,10 +24,10 @@ class Connector
                 $this->_connection = new mysqli($server, $dbUsername, $dbPassword, $dbName);
                 if ($this->_connection->connect_error) {
                     $this->_connection = null;
-                    throw new \Exception("Nao foi possivel se conectar a base de dados.");
+                    throw new Exception("Nao foi possivel se conectar a base de dados.");
                 }
             }
-        }catch (\Exception $e){
+        }catch (Exception $e){
             //todo logger
         }
 

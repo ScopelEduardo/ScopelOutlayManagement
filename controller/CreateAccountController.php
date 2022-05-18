@@ -1,6 +1,10 @@
 <?php
 
 //todo verify already logged redirect to dashboard
+include ("../model/user/repository/UserRepository.php");
+include ("../model/user/User.php");
+use \ScopelOutlayManagement\model\repository\UserRepository;
+use \ScopelOutlayManagement\model\User;
 
 if ($_POST) {
     try {
@@ -13,7 +17,7 @@ if ($_POST) {
         $userRepository = new UserRepository();
         $user = $userRepository->readByUsername($username);
         if ($user){
-            throw new \Exception("Username already exists in database!");
+            throw new Exception("Username already exists in database!");
         }else{
             if($password == $confirmPassword){
                 $user = new User();
@@ -24,10 +28,10 @@ if ($_POST) {
 
                 $userRepository->create($user);
             }else{
-                throw new \Exception("Password doesnt match!");
+                throw new Exception("Password doesnt match!");
             }
         }
-    }catch (\Exception $e){
+    }catch (Exception $e){
 
     }
 } else {

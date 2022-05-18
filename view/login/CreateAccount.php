@@ -19,7 +19,7 @@
             <h2>OutlayManagement</h2>
             <h4>Create Account</h4>
         </header>
-        <form name="create-account-form" class="login-form" action="../../controller/LoginController.php" method="post">
+        <form name="create-account-form" class="login-form" action="../../controller/CreateAccountController.php" method="post">
             <input type="text" name="username" class="login-input" placeholder="Username" required autofocus/>
             <input type="text" name="firstname" class="login-input" placeholder="Firstname" required/>
             <input type="text" name="lastname" class="login-input" placeholder="Lastname" required/>

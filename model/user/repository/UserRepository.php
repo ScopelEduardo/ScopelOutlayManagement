@@ -1,5 +1,14 @@
 <?php
 
+namespace ScopelOutlayManagement\model\repository;
+
+include ("../service/database/Connector.php");
+include ("../model/user/User.php");
+
+use mysqli_result;
+use ScopelOutlayManagement\service\connector\Connector;
+use ScopelOutlayManagement\model\User;
+
 class UserRepository
 {
     /**
@@ -26,12 +35,15 @@ class UserRepository
         $firstname = $user->getFirstname();
         $lastname = $user->getLastname();
         $password = md5($user->getPassword()); //encryption
-        $sql = "INSERT INTO outlay_user (username, firstname, lastname, password) VALUES ($username, $firstname, $lastname, $password)";
+        $sql = "INSERT INTO outlay_user (username, firstname, lastname, password) VALUES ('$username', '$firstname', '$lastname', '$password')";
+        print_r($sql);
         try {
             $conn->begin_transaction();
             $result = $conn->query($sql);
+            $conn->commit();
         }catch (\Exception $e){
             //todo logger
+            print_r($e);
             $conn->rollback();
         }
         return $result;
@@ -58,7 +70,7 @@ class UserRepository
                 $user->setFirstname($row["firstname"]);
                 $user->setLastname($row["lastname"]);
                 $user->setPassword($row["password"]);
-                $user->setCreatedAt($row["created_ad"]);
+                $user->setCreatedAt($row["created_at"]);
                 $user->setUpdatedAt($row["updated_at"]);
                 $user->setAdditionalInfo($row["additional_info"]);
             }
@@ -73,7 +85,7 @@ class UserRepository
     public function readByUsername($username){
         $conn = $this->_dbConnection->getConnection();
         $user = false;
-        $sql = "SELECT * FROM outlay_user WHERE username = '".$username."'";
+        $sql = "SELECT * FROM outlay_user WHERE username = '$username'";
         try {
             $result = $conn->query($sql);
         }catch (\Exception $e){
@@ -87,7 +99,7 @@ class UserRepository
                 $user->setFirstname($row["firstname"]);
                 $user->setLastname($row["lastname"]);
                 $user->setPassword($row["password"]);
-                $user->setCreatedAt($row["created_ad"]);
+                $user->setCreatedAt($row["created_at"]);
                 $user->setUpdatedAt($row["updated_at"]);
                 $user->setAdditionalInfo($row["additional_info"]);
             }
@@ -112,6 +124,7 @@ class UserRepository
         try {
             $conn->begin_transaction();
             $result = $conn->query($sql);
+            $conn->commit();
         }catch (\Exception $e){
             //todo logger
             $conn->rollback();
@@ -125,7 +138,6 @@ class UserRepository
      */
     public function delete($userId){
         $conn = $this->_dbConnection->getConnection();
-        $user = false;
         $sql = "DELETE FROM outlay_user WHERE user_id = $userId";
         try {
             $result = $conn->query($sql);
