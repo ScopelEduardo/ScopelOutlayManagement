@@ -1,0 +1,27 @@
+<?php
+
+//todo verify already logged redirect to dashboard
+
+if ($_POST) {
+    try {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $userRepository = new UserRepository();
+        $user = $userRepository->readByUsername($username);
+        if ($user){
+            if (md5($password) == $user->getPassword()){
+                //todo log user
+            }else{
+                throw new \Exception("Wrong password");
+            }
+        }else{
+            //todo logger
+            throw new \Exception("User not found!");
+        }
+    }catch (\Exception $e){
+
+    }
+} else {
+    //todo redirect
+}
