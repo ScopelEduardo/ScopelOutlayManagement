@@ -13,6 +13,7 @@ if ($_POST) {
         $user = $userRepository->readByUsername($username);
         if ($user){
             if (md5($password) == $user->getPassword()){
+                print_r("Logado!");
                 //todo log user
             }else{
                 throw new Exception("Wrong password");

@@ -2,9 +2,9 @@
 
 //todo verify already logged redirect to dashboard
 include ("../model/user/repository/UserRepository.php");
-include ("../model/user/User.php");
-use \ScopelOutlayManagement\model\repository\UserRepository;
-use \ScopelOutlayManagement\model\User;
+//include ("../model/user/User.php");
+use ScopelOutlayManagement\model\repository\UserRepository;
+use ScopelOutlayManagement\model\User;
 
 if ($_POST) {
     try {
@@ -27,6 +27,7 @@ if ($_POST) {
                 $user->setPassword($password);
 
                 $userRepository->create($user);
+                print_r("Sucesso!");
             }else{
                 throw new Exception("Password doesnt match!");
             }
