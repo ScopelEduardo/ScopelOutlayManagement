@@ -5,7 +5,6 @@ include ("../model/user/repository/UserRepository.php");
 use ScopelOutlayManagement\model\repository\UserRepository;
 
 if ($_POST) {
-    print_r("asdasd");
     try {
         $username = $_POST['username'];
         $password = $_POST['password'];

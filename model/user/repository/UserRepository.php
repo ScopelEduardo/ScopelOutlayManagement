@@ -36,14 +36,12 @@ class UserRepository
         $lastname = $user->getLastname();
         $password = md5($user->getPassword()); //encryption
         $sql = "INSERT INTO outlay_user (username, firstname, lastname, password) VALUES ('$username', '$firstname', '$lastname', '$password')";
-        print_r($sql);
         try {
             $conn->begin_transaction();
             $result = $conn->query($sql);
             $conn->commit();
         }catch (\Exception $e){
             //todo logger
-            print_r($e);
             $conn->rollback();
         }
         return $result;
