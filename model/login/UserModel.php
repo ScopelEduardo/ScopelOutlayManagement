@@ -1,5 +1,7 @@
 <?php
 
+include_once ('C:\xampp3\htdocs\Trabalho2\model\AbstractModel.php');
+
 class UserModel extends AbstractModel
 {
     private $id;
@@ -67,7 +69,7 @@ class UserModel extends AbstractModel
     /**
      * @param mixed $lastname
      */
-    public function setlastname($lastname)
+    public function setLastname($lastname)
     {
         $this->lastname = $lastname;
         return $this;
@@ -149,13 +151,13 @@ class UserModel extends AbstractModel
     public function setData(array $params)
     {
 
-        $this->id = $params['id'];
-        $this->username = $params['username'];
-        $this->name = $params['name'];
-        $this->lastname = $params['lastname'];
-        $this->password = $params['password'];
-        $this->createdAt = $params['created_at'];
-        $this->updatedAt = $params['updated_at'];
+        $this->id = $params['id'] ?? '';
+        $this->username = $params['username'] ?? '';
+        $this->name = $params['name'] ?? '';
+        $this->lastname = $params['lastname'] ?? '';
+        $this->password = $params['password'] ?? '';
+        $this->createdAt = $params['created_at'] ?? '';
+        $this->updatedAt = $params['updated_at'] ?? '';
 
         return $this;
 

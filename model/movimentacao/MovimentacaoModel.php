@@ -1,5 +1,7 @@
 <?php
 
+include_once ('C:\xampp3\htdocs\Trabalho2\model\AbstractModel.php');
+
 class MovimentacaoModel extends AbstractModel implements ModelInterface
 {
     private $id;
@@ -21,11 +23,11 @@ class MovimentacaoModel extends AbstractModel implements ModelInterface
 
     public function setData(array $params)
     {
-        $this->id = $params['id'];
-        $this->userId = $params['user_id'];
-        $this->value = $params['value'];
-        $this->description = $params['description'];
-        $this->createdAt = $params['created_at'];
+        $this->id = $params['id'] ?? '';
+        $this->userId = $params['user_id'] ?? '';
+        $this->value = $params['value'] ?? '';
+        $this->description = $params['description'] ?? '';
+        $this->createdAt = $params['created_at'] ?? '';
     }
 
     /**

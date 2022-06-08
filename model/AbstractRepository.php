@@ -1,5 +1,7 @@
 <?php
 
+include_once ('C:\xampp3\htdocs\Trabalho2\model\RepositoryInterface.php');
+
 abstract class AbstractRepository implements RepositoryInterface
 {
     abstract public static function create($model);

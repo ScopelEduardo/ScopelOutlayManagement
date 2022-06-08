@@ -1,5 +1,9 @@
 <?php
 
+include_once ('C:\xampp3\htdocs\Trabalho2\model\AbstractRepository.php');
+include_once ('C:\xampp3\htdocs\Trabalho2\model\login\UserModel.php');
+include_once ('C:\xampp3\htdocs\Trabalho2\connector\Connector.php');
+
 class MovimentacaoRepository extends AbstractRepository
 {
 

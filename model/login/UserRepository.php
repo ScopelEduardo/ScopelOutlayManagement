@@ -1,5 +1,8 @@
 <?php
 
+include_once ('C:\xampp3\htdocs\Trabalho2\model\AbstractRepository.php');
+include_once ('C:\xampp3\htdocs\Trabalho2\connector\Connector.php');
+
 class UserRepository extends AbstractRepository
 {
 
@@ -10,8 +13,9 @@ class UserRepository extends AbstractRepository
         $result = false;
         $username = $model->getUsername();
         $name = $model->getName();
+        $lastname = $model->getLastName();
         $password = md5($model->getPassword()); //encryption
-        $sql = "INSERT INTO user (username, name, password) VALUES ('$username', '$name', '$password')";
+        $sql = "INSERT INTO user (username, name, lastname, password) VALUES ('$username', '$name', '$lastname', '$password')";
         try {
             $conn->begin_transaction();
             $result = $conn->query($sql);
@@ -125,11 +129,12 @@ class UserRepository extends AbstractRepository
         $id = $model->getId();
         $username = $model->getUsername();
         $name = $model->getName();
+        $lastname = $model->getLastName();
         $password = $model->getPassword();
         if ($password !== $lastPassword){
             $password = md5($model->getPassword()); //encryption
         }
-        $sql = "UPDATE user SET username = '$username', name = '$name', password = '$password' WHERE id = '$id'";
+        $sql = "UPDATE user SET username = '$username', name = '$name', lastname = '$lastname', password = '$password' WHERE id = '$id'";
         try {
             $conn->begin_transaction();
             $result = $conn->query($sql);

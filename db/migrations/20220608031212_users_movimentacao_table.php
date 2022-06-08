@@ -39,6 +39,7 @@ class UsersMovimentacaoTable extends AbstractMigration
         $tableUser->addColumn('name', 'string', ['null' => false, 'length' => 255]);
         $tableUser->addColumn('created_at', 'datetime', ['null' => true, 'default' => 'CURRENT_TIMESTAMP']);
         $tableUser->addColumn('updated_at', 'datetime', [ 'null' => true, 'default' => 'CURRENT_TIMESTAMP', 'update' => 'CURRENT_TIMESTAMP']);
+        $tableUser->addIndex(['username'], ['unique' => true]);
 
         $tableUser->create();
 
@@ -48,7 +49,6 @@ class UsersMovimentacaoTable extends AbstractMigration
         $tableMov->addColumn('value', 'decimal', ['null' => false, 'scale' => 2, 'precision' => 10]);
         $tableMov->addColumn('description', 'string', ['null' => true]);
         $tableMov->addColumn('created_at', 'datetime', ['null' => true, 'default' => 'CURRENT_TIMESTAMP']);
-        $tableMov->addColumn('updated_at', 'datetime', [ 'null' => true, 'default' => 'CURRENT_TIMESTAMP', 'update' => 'CURRENT_TIMESTAMP']);
 
         $tableMov->addForeignKey('user_id', 'user');
 
