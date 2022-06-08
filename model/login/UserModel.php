@@ -5,6 +5,7 @@ class UserModel extends AbstractModel
     private $id;
     private $username;
     private $name;
+    private $lastname;
     private $password;
     private $createdAt;
     private $updatedAt;
@@ -52,6 +53,23 @@ class UserModel extends AbstractModel
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param mixed $lastname
+     */
+    public function setlastname($lastname)
+    {
+        $this->lastname = $lastname;
         return $this;
     }
 
@@ -121,6 +139,7 @@ class UserModel extends AbstractModel
             'id' => $this->id,
             'username' => $this->username,
             'name' => $this->name,
+            'lastname' => $this->lastname,
             'password' => $this->password,
             'created_at' => $this->createdAt,
             'updated_at' => $this->updatedAt
@@ -133,6 +152,7 @@ class UserModel extends AbstractModel
         $this->id = $params['id'];
         $this->username = $params['username'];
         $this->name = $params['name'];
+        $this->lastname = $params['lastname'];
         $this->password = $params['password'];
         $this->createdAt = $params['created_at'];
         $this->updatedAt = $params['updated_at'];
